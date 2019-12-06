@@ -1,0 +1,50 @@
+﻿@model List<ProdutorModel>
+@{ 
+    Layout = "";
+}
+<head>
+    <link href="~/Content/Filter.css" rel="stylesheet" />
+    <style type="text/css">
+    </style>
+</head>
+
+
+<body>
+    <div class="divLogo">
+        <img src="~/Content/logo2branco.svg" alt="logo textw" width="206" height="90">
+    </div>
+    <div class="botao">
+        <a class="detalhes2" href="@Url.Action("Index")" id="BOTAO" type="button">
+            Voltar
+        </a>
+    </div>
+
+
+    <div class="duaslinhas">
+        <div class="primeiralinha">
+
+            @foreach (ProdutorModel produtor in Model)
+            {
+                <div class="card">
+                    <div class="ft">
+                        <div style='display: flex; flex-direction: column; align-items: center; justify-content:center; width: 50%'>
+                           
+                                <img src="~/Content/lettuce.svg" alt="logo texto" width="125" height="135" class="user">
+                           
+                            <a class="detalhes" id="BOTAO" href="~/Profile/perfil?id=@produtor.ProdId">
+                                Ver detalhes
+                            </a>
+                        </div>
+                        <div class="produtores">
+                            <p> @produtor.ProdNom </p>
+                            <p> @produtor.ProdEnd, @produtor.ProdNum </p>
+                            <p> @produtor.ProdBairro </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>
+

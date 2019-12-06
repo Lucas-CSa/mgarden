@@ -1,0 +1,129 @@
+﻿@{ 
+    Layout = "";
+}
+<head>
+    <link href="~/Content/buscada.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div class="cima">
+        <div class="logo-wrapper">
+            <img src="~/Content/logo2branco.svg" alt="Logo" class="logo">
+        </div>
+    </div>
+    <section class="section-1">
+        <h1 class="title">Procure produtores!</h1>
+        
+        <div class="options-wrapper">
+            <form method="post" action="@Url.Action("Search")">
+                <div class="div1">
+
+                    <label class="container">
+                        Verduras
+                        <input name="ProdVerd" id="ProdVerd" value="ProdVerd = 1" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">
+                        Legumes
+                        <input name="ProdLeg" id="ProdLeg" value="ProdLeg = 1" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">
+                        Frutas
+                        <input name="ProdFrut" id="ProdFrut" value="ProdFrut = 1" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="container">
+                        Outros
+                        <input name="ProdOutr" id="ProdOutr" value="ProdOutr = 1" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+
+                </div>
+                <div class="custom-select">
+                    <select name="ProdReg" id="ProdReg">
+                        <option value="0">Selecione Região</option>
+                        <option value="ProdReg = 1">Zona Sul</option>
+                        <option value="ProdReg = 2">Zona Norte</option>
+                        <option value="ProdReg = 3">Zona Leste</option>
+                        <option value="ProdReg = 4">Zona Oeste</option>
+                        <option value="ProdReg = 5">Centro</option>
+                    </select>
+                </div>
+                <div class="buscar">
+                    <button class="btnBuscar" type="submit">Buscar!</button>
+                </div>
+            </form>
+
+        </div>
+        
+
+        <div class="Vwrapper">
+            <a href="~/Home/Index" id="voltar">VOLTAR</a>
+        </div>
+    </section>
+
+    <script>
+        var x, i, j, selElmnt, a, b, c;
+        x = document.getElementsByClassName("custom-select");
+        for (i = 0; i < x.length; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+            for (j = 1; j < selElmnt.length; j++) {
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function (e) {
+                    var y, i, k, s, h;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < s.length; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            for (k = 0; k < y.length; k++) {
+                                y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function (e) {
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+            });
+        }
+
+        function closeAllSelect(elmnt) {
+            var x, y, i, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            for (i = 0; i < y.length; i++) {
+                if (elmnt == y[i]) {
+                    arrNo.push(i)
+                } else {
+                    y[i].classList.remove("select-arrow-active");
+                }
+            }
+            for (i = 0; i < x.length; i++) {
+                if (arrNo.indexOf(i)) {
+                    x[i].classList.add("select-hide");
+                }
+            }
+        }
+    </script>
+</body>

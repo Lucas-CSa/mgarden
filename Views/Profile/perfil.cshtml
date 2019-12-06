@@ -1,0 +1,76 @@
+﻿@model ProdutorModel;
+@{ 
+    Layout = "";
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="~/Content/perfil.css" media="screen" />
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <a href="~/Search/Index" class="vltr">VOLTAR</a>
+        <div class="card">
+            <div class="esquerda">
+                <img class="fotinho" src="~/Content/lettuce.svg" alt="vegetable" height="198px" width="198px">
+                <div class="nota">
+                    <img class="estrelinha" src="~/Content/star.svg" alt="star" height="27px" width="27px">
+                    <p class="notaNum">5.0</p>
+                </div>
+                <div class="infos">
+                    <p class="contato">Contato: @Model.ProdTel</p>
+                    <ul>
+                        @if (Model.ProdFrut != "False")
+                        {
+                            <li>Frutas</li>
+                        }
+                        @if (Model.ProdVerd != "False")
+                        {
+                            <li>Legumes</li>
+                        }
+                        @if (Model.ProdLeg != "False")
+                        {
+                            <li>Verduras</li>
+                        }
+                        @if (Model.ProdOutr != "False")
+                        {
+
+                            <li>Outros</li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="direita">
+                <div class="desc">
+                    <h1 class="nome">@Model.ProdNom</h1>
+                    <p class="desc-txt">
+                        @Model.ProdDesc
+                    </p>
+                </div>
+                <div class="resto">
+                    <div class="ende">
+                    <ul>
+                        <li class="ende-li">@Model.ProdEnd</li>
+                        <li class="ende-li">@Model.ProdNum</li>
+                        <li class="ende-li">@Model.ProdBairro
+                        </li>
+                    </ul>
+                    </div>
+                    <div class="dNota">
+                        <span class="aval-txt">
+                            Já o conhece?Avalie!
+                        </span>
+                        <input id="aval" class="aval" type="number" placeholder="Sua avaliação" min="0" max="5">
+                        <button id="btn" class="btn">Avaliar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

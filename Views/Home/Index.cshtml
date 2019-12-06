@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "";
+ }
+
+<head>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+
+<div class="cont">
+    <section class="section-1">
+        <nav class="fadeInSec">
+            <ul>
+                <li><a href="@Url.Action("GoSearch")">BUSQUE</a></li>
+                <li><a href="@Url.Action("GoProfile")">INDIQUE</a></li>
+            </ul>
+        </nav>
+        <img src="~/Content/logo2branco.svg" alt="Logo" class="fadeInPrin">
+        <a href="#s2" class="icon-wrapper-a">
+            <i class="material-icons fadeInSec">expand_more</i>
+        </a>
+    </section>
+    <section id="s2" class="section-2">
+        <div>
+            <h1>Sobre MyGarden</h1>
+            <p>
+                O MyGarden é uma plataforma online especializada no intermédio entre os pequenos produtores e compradores do setor agrícola paulista.
+                Nossa missão é trazer visibilidade para os agricultores de menor escala, responsáveis pela maior fatia da produção de produtos agrícolas consumidos no Brasil, bem como apresentar diferentes alternativas de comércio entre estes e os diferentes clientes.
+                E como fazemos isso? Estabelecendo uma ponte entre o produto, produtor e o comprador, por uma dinâmica simples, intuitiva e eficiente.
+            </p>
+        </div>
+        <div>
+            <p>
+                Você é ou conhece um pequeno produtor?
+                <a href="@Url.Action("GoProfile")">Indique</a>!
+            </p>
+        </div>
+    </section>
+</div>
